@@ -14,23 +14,20 @@ class SearchBox extends React.Component{
 	}
 
 	checkboxHandler (event){
-		const interests = this.state.selectedInterests
+		const selectedInterests = this.state.selectedInterests
 		if (event.target.checked){
-			const newInterest = this.props.interests.filter((interest) => {
+			const newInterest = this.props.interests.find((interest) => {
 				return (interest.id === parseInt(event.target.id))
 			})
 
 			this.setState({
-				selectedInterests: [...interests, newInterest]
+				selectedInterests: [...selectedInterests, newInterest]
 			})
-
-			actions.fetchFields(slfjds)
-			debugger
+			this.props.actions.fetchFields([...selectedInterests, newInterest])
 		} else {
 			debugger
 		}
 
-		debugger
 	}
 
 	render(){
@@ -46,17 +43,23 @@ class SearchBox extends React.Component{
 							</div>
 						)
 					})}
-	
+
 				</form>
 			</div>
 		)
 	}
 }
 
-function MapStateToProps(state){
+function mapStateToProps(state){
 	return{
 		interests: state.interests
 	}
 }
 
-export default connect(MapStateToProps)(SearchBox)
+function mapDispatchToProps(dispatch){
+	return{
+		actions: bindActionCreators(actions, dispatch)
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBox)
