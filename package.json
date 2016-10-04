@@ -1,0 +1,33 @@
+{
+  "name": "wonderfrontend",
+  "version": "1.0.0",
+  "description": "Front-end of final project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --history-api-fallback"
+  },
+  "keywords": [
+    "ladies",
+    "careers",
+    "feminism"
+  ],
+  "author": "Mary Abi Tami",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.8.1",
+    "redux": "^3.6.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.17.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "redux-promise": "^0.5.3",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.1"
+  }
+}
