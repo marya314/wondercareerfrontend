@@ -15,7 +15,6 @@ export function fetchFields(selectedInterests){
 	const fields = 	fetch('http://localhost:3000/api/v1/fields?interestIds='+ stringifiedIds)
 			.then(response => {return response.json()})
 			.then(fields => {return fields})
-		
 	return ({
 				type: 'FETCH_FIELDS',
 				payload: fields

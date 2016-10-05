@@ -1,12 +1,24 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router'
 
 function FieldList (props){
-debugger
+
 	return(
 		<div>
 			<h1>Field List!</h1>
-			{props.fields.map((field) => {return <p>{field.name}</p>})}
+			<ul>
+			{props.fields.map((field) => {
+				return(
+				<li>
+					<Link to={`/fields/${field.id}`} onClick={props.changeSelectedField(field)}>
+						{field.name}
+					</Link>
+				</li>
+			)
+		})}
+			</ul>
+
 		</div>
 	)
 }
