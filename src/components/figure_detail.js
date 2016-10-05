@@ -7,7 +7,7 @@ function FigureDetail(props) {
 				<h1>{props.figure.name}</h1>
 				<p><em>"{props.figure.tagline}"</em></p>
 				<p>{props.figure.bio}</p>
-				<img width="200" src={props.figure.image} />
+				<img width="300" src={props.figure.image} />
 			</div>
 	)
 }

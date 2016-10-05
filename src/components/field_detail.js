@@ -6,8 +6,9 @@ function FieldDetail(props) {
 	return(
 
 		<div className="col-md-8" id="field-detail">
-			<h2>{props.selectedField.name}</h2>
-			<p>{props.selectedField.description}</p>
+			<h3>{props.selectedField.name}</h3>
+			<p><strong>About this career field: </strong>{props.selectedField.description}</p>
+			<h4>Notable Figures in This Field</h4>
 			<ul>
 				{props.selectedField.figures.map((figure) => {
 					return (
