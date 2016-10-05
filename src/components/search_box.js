@@ -2,6 +2,7 @@ import React from 'react'
 import * as actions from '../actions'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
+import {browserHistory} from 'react-router'
 
 
 class SearchBox extends React.Component{
@@ -24,6 +25,8 @@ class SearchBox extends React.Component{
 				selectedInterests: [...selectedInterests, newInterest]
 			})
 			this.props.actions.fetchFields([...selectedInterests, newInterest])
+
+			browserHistory.push('/fields')
 		} else {
 			debugger
 		}

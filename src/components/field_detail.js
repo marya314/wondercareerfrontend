@@ -2,20 +2,17 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 function FieldDetail(props) {
-	debugger
-
 	return(
-		<div>
+		<div className="col-md-5">
 			<h1>Field Detail!</h1>
-			{props.selectedField}
+			{props.selectedField.name}
 		</div>
 	)
 }
 
-function mapStateToProps(state){
-	// debugger
+function mapStateToProps(state, ownProps){
 	return{
-		fields: state.selectedField
+		selectedField: state.fields.find((field) => {return field.id === parseInt(ownProps.routeParams.id)} )
 	}
 }
 

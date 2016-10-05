@@ -5,20 +5,20 @@ import {Link} from 'react-router'
 function FieldList (props){
 
 	return(
-		<div>
+		<div className="col-md-3">
 			<h1>Field List!</h1>
 			<ul>
 			{props.fields.map((field) => {
 				return(
-				<li>
-					<Link to={`/fields/${field.id}`} onClick={props.changeSelectedField(field)}>
+				<li key={field.id}>
+					<Link to={`/fields/${field.id}`}>
 						{field.name}
 					</Link>
 				</li>
 			)
 		})}
 			</ul>
-
+			{props.children}
 		</div>
 	)
 }
