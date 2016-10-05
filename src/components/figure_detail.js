@@ -1,18 +1,26 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-function FigureDetail() {
+function FigureDetail(props) {
 	return(
-		<div>
-			<img width="100" src="/src/images/ada.jpg" />
-			<h1>Figure Detail</h1>
+		<div id="figure-detail">
+			<h1>{props.figure.name}</h1>
+			<p><em>"{props.figure.tagline}"</em></p>
+			<p>{props.figure.bio}</p>
+			<img width="200" src={props.figure.image} />
 		</div>
 	)
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state, ownProps){
+	// find the field associated with figure
+	const field = state.fields.find((field) => {return field.id === parseInt(ownProps.params.field_id) } )
+
+	// find the figure from that field
+	const figure = field.figures.find( (figure) => {return figure.id === parseInt(ownProps.params.id)} )
+
 	return{
-		fields: state.figure
+		figure: figure
 	}
 }
 

@@ -7,12 +7,10 @@ class App extends React.Component {
 
 	render(){
 		return(
-			<div>
+			<div className="row" id="app">
 				<NavBar title="Career Yeah!" url="/" />
-				<div className="col-md-4">
-					<SearchBox />
-				</div>
-					{this.props.children}
+				<SearchBox />
+				{this.props.children}
 			</div>
 		)
 	}

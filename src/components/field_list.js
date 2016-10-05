@@ -5,7 +5,7 @@ import {Link} from 'react-router'
 function FieldList (props){
 
 	return(
-		<div className="col-md-3">
+		<div className="col-md-9" id="field-list">
 			<h1>Field List!</h1>
 			<ul>
 			{props.fields.map((field) => {

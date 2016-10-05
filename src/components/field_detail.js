@@ -4,7 +4,7 @@ import {Link} from 'react-router'
 
 function FieldDetail(props) {
 	return(
-		<div className="col-md-5">
+		<div className="col-md-4" id="field-detail">
 			<h2>{props.selectedField.name}</h2>
 			<p>{props.selectedField.description}</p>
 			<ul>
@@ -12,7 +12,7 @@ function FieldDetail(props) {
 					return (
 						<div>
 							<li key={figure.id}>
-								<Link to={`/figures/${figure.id}`}>{figure.name}</Link>
+								<Link to={`/fields/${props.selectedField.id}/figures/${figure.id}`}>{figure.name}</Link>
 							</li>
 						</div>
 					)
@@ -25,7 +25,7 @@ function FieldDetail(props) {
 
 function mapStateToProps(state, ownProps){
 	return{
-		selectedField: state.fields.find((field) => {return field.id === parseInt(ownProps.routeParams.id)} )
+		selectedField: state.fields.find((field) => {return field.id === parseInt(ownProps.routeParams.field_id)} )
 	}
 }
 

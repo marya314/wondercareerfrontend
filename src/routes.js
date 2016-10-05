@@ -9,8 +9,8 @@ import FigureDetail from './components/figure_detail'
 export default (
 	<Route path='/' component={App}>
 		<Route path='/fields' component={FieldList}>
-			<Route path='/fields/:id' component={FieldDetail} >
-				<Route path='/figures/:id' component={FigureDetail} />
+			<Route path='/fields/:field_id' component={FieldDetail}>
+				<Route path='/fields/:field_id/figures/:id' component={FigureDetail} />
 			</Route>
 		</Route>
 	</Route>

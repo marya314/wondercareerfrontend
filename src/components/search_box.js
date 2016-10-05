@@ -35,8 +35,8 @@ class SearchBox extends React.Component{
 
 	render(){
 		return(
-			<div>
-				<h1>Search Your Interests</h1>
+			<div className="col-md-3" id="search-by-interest">
+				<h3>Search by Interest</h3>
 				<form>
 					{this.props.interests.map((interest) => {
 						return(
