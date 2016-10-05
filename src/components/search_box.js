@@ -4,7 +4,6 @@ import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {browserHistory} from 'react-router'
 
-
 class SearchBox extends React.Component{
 	constructor(props){
 		super(props)

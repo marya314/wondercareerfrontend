@@ -4,7 +4,6 @@ import {Link} from 'react-router'
 
 function FieldDetail(props) {
 	return(
-
 		<div className="col-md-8" id="field-detail">
 			<h3>{props.selectedField.name}</h3>
 			<p><strong>About this career field: </strong>{props.selectedField.description}</p>
