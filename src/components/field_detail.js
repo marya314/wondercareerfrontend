@@ -4,7 +4,8 @@ import {Link} from 'react-router'
 
 function FieldDetail(props) {
 	return(
-		<div className="col-md-4" id="field-detail">
+
+		<div className="col-md-8" id="field-detail">
 			<h2>{props.selectedField.name}</h2>
 			<p>{props.selectedField.description}</p>
 			<ul>
@@ -20,6 +21,7 @@ function FieldDetail(props) {
 			</ul>
 			{props.children}
 		</div>
+
 	)
 }
 

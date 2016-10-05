@@ -3,12 +3,12 @@ import {connect} from 'react-redux'
 
 function FigureDetail(props) {
 	return(
-		<div id="figure-detail">
-			<h1>{props.figure.name}</h1>
-			<p><em>"{props.figure.tagline}"</em></p>
-			<p>{props.figure.bio}</p>
-			<img width="200" src={props.figure.image} />
-		</div>
+			<div id="figure-detail">
+				<h1>{props.figure.name}</h1>
+				<p><em>"{props.figure.tagline}"</em></p>
+				<p>{props.figure.bio}</p>
+				<img width="200" src={props.figure.image} />
+			</div>
 	)
 }
 

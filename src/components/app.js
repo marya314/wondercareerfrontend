@@ -6,8 +6,9 @@ import SearchBox from './search_box'
 class App extends React.Component {
 
 	render(){
+		debugger
 		return(
-			<div className="row" id="app">
+			<div className="container" id="app">
 				<NavBar title="Career Yeah!" url="/" />
 				<SearchBox />
 				{this.props.children}
