@@ -16,7 +16,7 @@ class SearchBox extends React.Component{
 
 	checkboxHandler (event){
 		if (event.target.checked){
-			const selectedInterests = this.state.selectedInterests
+			let selectedInterests = this.state.selectedInterests
 			const newInterest = this.props.interests.find((interest) => {
 				return (interest.id === parseInt(event.target.id))
 			})
@@ -28,30 +28,19 @@ class SearchBox extends React.Component{
 
 			browserHistory.push('/fields')
 		} else {
-			const selectedInterests = this.state.selectedInterests
+			let selectedInterests = this.state.selectedInterests
 
 			const removedInterestId = parseInt(event.target.id)
 			const removedInterest = this.state.selectedInterests.find((interest) => {return interest.id === removedInterestId})
 
-
-
-			// problem!!! splice!!!!
-			const newSelectedInterests = [...selectedInterests.slice(0, removedInterestId-1), ...selectedInterests.slice(removedInterestId,selectedInterests.length)]
-			debugger
-
-
+			const indexOfRemovedItem = selectedInterests.indexOf(removedInterest)
+			selectedInterests.splice(indexOfRemovedItem, 1)
 
 			this.setState({
-				selectedInterests: newSelectedInterests
+				selectedInterests: selectedInterests
 			})
 
-			this.props.actions.removeFields(newSelectedInterests)
-
-			console.log("removedInterestId: " + removedInterestId)
-			console.log("newSelectedInterests: " + newSelectedInterests.map((int) => {return int.name}))
-			console.log("state.selectedinterets: " + this.state.selectedInterests.map((int) => {return int.name}))
-
-
+			this.props.actions.removeFields(selectedInterests)
 
 		}
 	}
