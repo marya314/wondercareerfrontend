@@ -23,7 +23,7 @@ export function fetchFields(selectedInterests){
 
 export function removeFields(newSelectedInterests){
 	const stringifiedIds = JSON.stringify (newSelectedInterests.map((interest) => {return interest.id}))
-	const fields = 	fetch('http://localhost:3000/api/v1/fields?interestIds='+ stringifiedIds)
+	const fields = 	fetch('https://polar-basin-83640.herokuapp.com/api/v1/fields?interestIds='+ stringifiedIds)
 			.then(response => {return response.json()})
 			.then(fields => {return fields})
 
