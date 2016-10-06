@@ -27,7 +27,8 @@ function FieldDetail(props) {
 
 function mapStateToProps(state, ownProps){
 	return{
-		selectedField: state.fields.find((field) => {return field.id === parseInt(ownProps.routeParams.field_id)} )
+		selectedField: state.fields.find((field) => {return field.id === parseInt(ownProps.routeParams.field_id)
+		} )
 	}
 }
 

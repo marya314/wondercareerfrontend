@@ -20,3 +20,16 @@ export function fetchFields(selectedInterests){
 				// [{id: 1, name: 'Art', description: 'Making stuff pretty'}, {id: 2, name: 'Computer Schmience', description: 'Breaking schomputers'}]
 			})
 }
+
+export function removeFields(newSelectedInterests){
+	const stringifiedIds = JSON.stringify (newSelectedInterests.map((interest) => {return interest.id}))
+	const fields = 	fetch('http://localhost:3000/api/v1/fields?interestIds='+ stringifiedIds)
+			.then(response => {return response.json()})
+			.then(fields => {return fields})
+
+	return({
+		type: 'REMOVE_FIELDS',
+		payload: fields
+	})
+}
+

@@ -9,13 +9,14 @@ class SearchBox extends React.Component{
 		super(props)
 		this.state = {
 			selectedInterests: []
+			// selectedFields: []
 		}
 		this.checkboxHandler = this.checkboxHandler.bind(this)
 	}
 
 	checkboxHandler (event){
-		const selectedInterests = this.state.selectedInterests
 		if (event.target.checked){
+			const selectedInterests = this.state.selectedInterests
 			const newInterest = this.props.interests.find((interest) => {
 				return (interest.id === parseInt(event.target.id))
 			})
@@ -27,13 +28,31 @@ class SearchBox extends React.Component{
 
 			browserHistory.push('/fields')
 		} else {
+			const selectedInterests = this.state.selectedInterests
+
 			const removedInterestId = parseInt(event.target.id)
+			const removedInterest = this.state.selectedInterests.find((interest) => {return interest.id === removedInterestId})
+
+
+
+			// problem!!! splice!!!!
 			const newSelectedInterests = [...selectedInterests.slice(0, removedInterestId-1), ...selectedInterests.slice(removedInterestId,selectedInterests.length)]
+			debugger
+
+
+
 			this.setState({
 				selectedInterests: newSelectedInterests
 			})
-			this.props.actions.fetchFields(newSelectedInterests)
-			debugger
+
+			this.props.actions.removeFields(newSelectedInterests)
+
+			console.log("removedInterestId: " + removedInterestId)
+			console.log("newSelectedInterests: " + newSelectedInterests.map((int) => {return int.name}))
+			console.log("state.selectedinterets: " + this.state.selectedInterests.map((int) => {return int.name}))
+
+
+
 		}
 	}
 
