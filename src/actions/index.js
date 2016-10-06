@@ -1,5 +1,5 @@
 export function fetchInterests(){
-	const interests = fetch('https://polar-basin-83640.herokuapp.com/api/v1/interests')
+	const interests = fetch('http://localhost:3000/api/v1/interests')
 		.then(response => {return response.json()})
 		.then(interests => {return interests})
 	// const interests = [{id: 1, name: "crafts"}, {id: 2, name: "medicine"}, {id: 3, name: "food"}, {id: 4, name: "animal welfare"}, {id: 5, name: "programming"}, {id: 6, name: "fashion"}]
@@ -11,7 +11,7 @@ export function fetchInterests(){
 
 export function fetchFields(selectedInterests){
 	const stringifiedIds = JSON.stringify (selectedInterests.map((interest) => {return interest.id}))
-	const fields = 	fetch('https://polar-basin-83640.herokuapp.com/api/v1/fields?interestIds='+ stringifiedIds)
+	const fields = 	fetch('http://localhost:3000/fields?interestIds='+ stringifiedIds)
 			.then(response => {return response.json()})
 			.then(fields => {return fields})
 	return ({
@@ -23,7 +23,7 @@ export function fetchFields(selectedInterests){
 
 export function removeFields(newSelectedInterests){
 	const stringifiedIds = JSON.stringify (newSelectedInterests.map((interest) => {return interest.id}))
-	const fields = 	fetch('https://polar-basin-83640.herokuapp.com/api/v1/fields?interestIds='+ stringifiedIds)
+	const fields = 	fetch('http://localhost:3000/api/v1/fields?interestIds='+ stringifiedIds)
 			.then(response => {return response.json()})
 			.then(fields => {return fields})
 
