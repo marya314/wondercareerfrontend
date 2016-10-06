@@ -19,13 +19,19 @@ class Quiz extends React.Component {
     }
   }
 
+  submitForm(event){
+    event.preventDefault();
+    debugger
+
+  }
+
   render(){
     return(
       <div id="quiz">
 
         <h2>Career Quiz</h2>
         <p>Answer a few questions to determine your ideal career field...</p>
-        <form>
+        <form onSubmit={this.submitForm}>
           <p>1. What would you rather do on a free Saturday?</p>
           <input name="q-1" id='1-a' type="radio" />
           <label htmlFor='1-a'>a) Fixing people (--> healthcare, science, education)</label>
