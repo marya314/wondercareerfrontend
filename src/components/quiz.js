@@ -60,7 +60,7 @@ Questions:
   2) Gaston (--> law)
   3) Beaker (--> science)
   4) Pocahontas (--> art)
-  5) Tiana (--> hospitality)
+  5) Tiana (--> hospitality, business)
   6) Gepetto (--> trade)
   7) Wall-e (--> tech)
   8) Belle (--> editorial)
