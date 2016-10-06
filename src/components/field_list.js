@@ -11,7 +11,7 @@ function FieldList (props){
 				<ul>
 				{props.fields.map((field) => {
 					return(
-					<li key={field.id}>
+					<li key={'field' + field.id}>
 						<Link to={`/fields/${field.id}`}>
 							{field.name}
 						</Link>

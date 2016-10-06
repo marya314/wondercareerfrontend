@@ -27,6 +27,12 @@ class SearchBox extends React.Component{
 
 			browserHistory.push('/fields')
 		} else {
+			const removedInterestId = parseInt(event.target.id)
+			const newSelectedInterests = [...selectedInterests.slice(0, removedInterestId-1), ...selectedInterests.slice(removedInterestId,selectedInterests.length)]
+			this.setState({
+				selectedInterests: newSelectedInterests
+			})
+			this.props.actions.fetchFields(newSelectedInterests)
 			debugger
 		}
 	}
