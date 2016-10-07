@@ -1,4 +1,5 @@
 import React from 'react'
+import $ from 'jquery'
 // import jsonLoader from 'json-loader'
 // import quizData from 'json!./quiz-json-test.json';
 // ``` javascript
@@ -25,11 +26,22 @@ class Quiz extends React.Component {
       law: 0,
       trade: 0
     }
+    this.addAnswer = this.addAnswer.bind(this)
     this.submitForm = this.submitForm.bind(this)
   }
 
 
+  addAnswer(event){
+    const answer = event.target
+    if (answer.checked){
+      let allAnswers = this.state.answers
+      allAnswers.push(answer.id)
+      this.setState({
+        answers: [...this.state.answers, answer]
+      })
+    }
 
+  }
 
 
   submitForm(event){
@@ -38,12 +50,6 @@ class Quiz extends React.Component {
     this.refs['1-a'].checked
 
     const answers = this.state.answers
-
-    if (answer.checked){
-      this.setState({
-        
-      })
-    }
 
   }
 
@@ -55,29 +61,29 @@ class Quiz extends React.Component {
         <p>Answer a few questions to determine your ideal career field...</p>
         <form onSubmit={this.submitForm}>
           <p>1. What would you rather do on a free Saturday?</p>
-          <input name="q-1" id='1-a' ref='1-a' type="radio" />
+          <input name="q-1" id='1-a' data-id='1-a' type="radio" onChange={this.addAnswer} />
           <label htmlFor='1-a'>a) Fixing people (--> healthcare, science, education)</label>
           <br />
-          <input name="q-1" id='1-b' ref='1-b' type="radio" />
+          <input name="q-1" id='1-b' data-id='1-b' type="radio" onChange={this.addAnswer} />
           <label htmlFor='1-b'>b) Shopping at thrift stores (--> art, music)</label>
           <br />
-          <input name="q-1" id='1-c' ref='1-c' type="radio" />
+          <input name="q-1" id='1-c' data-id='1-c' type="radio" onChange={this.addAnswer} />
           <label htmlFor='1-c'>c) Building your own custom computer (--> tech, engineering, science, trade)</label>
           <br />
-          <input name="q-1" id='1-d' ref='1-d' type="radio" />
+          <input name="q-1" id='1-d' data-id='1-d' type="radio" onChange={this.addAnswer} />
           <label htmlFor='1-d'>d) Enjoying fine wines (--> hospitality, music, editorial, law, business)</label>
 
           <p>2. Pick the image that most excites you:</p>
-          <input name="q-2" id='2-a' type="radio" />
+          <input name="q-2" id='2-a' type="radio" onChange={this.addAnswer} />
           <label htmlFor='2-a'>1) Picture of money (--> Business, Law)</label>
           <br />
-          <input name="q-2" id='2-b' type="radio" />
+          <input name="q-2" id='2-b' type="radio" onChange={this.addAnswer} />
           <label htmlFor='2-b'>  2) Picture of kittens next to books (--> science, editorial, art, medicine, education)</label>
           <br />
-          <input name="q-2" id='2-c' type="radio" />
+          <input name="q-2" id='2-c' type="radio" onChange={this.addAnswer} />
           <label htmlFor='2-c'>  3) Picture of A lot of FOOD! (--> hospitality)</label>
           <br />
-          <input name="q-2" id='2-d' type="radio" />
+          <input name="q-2" id='2-d' type="radio" onChange={this.addAnswer} />
           <label htmlFor='2-d'>  4) Picture of welding (--> trade, tech, engineering)</label>
           <p>3. If you saw a kitten stuck in a tree how would you help it?</p>
           <input name="q-3" id='3-a' type="radio" />
