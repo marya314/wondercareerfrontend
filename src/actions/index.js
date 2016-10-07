@@ -2,7 +2,6 @@ export function fetchInterests(){
 	const interests = fetch('http://localhost:3000/api/v1/interests')
 		.then(response => {return response.json()})
 		.then(interests => {return interests})
-	// const interests = [{id: 1, name: "crafts"}, {id: 2, name: "medicine"}, {id: 3, name: "food"}, {id: 4, name: "animal welfare"}, {id: 5, name: "programming"}, {id: 6, name: "fashion"}]
 	return({
 		type: 'FETCH_INTERESTS',
 		payload: interests
@@ -15,10 +14,9 @@ export function fetchFields(selectedInterests){
 			.then(response => {return response.json()})
 			.then(fields => {return fields})
 	return ({
-				type: 'FETCH_FIELDS',
-				payload: fields
-				// [{id: 1, name: 'Art', description: 'Making stuff pretty'}, {id: 2, name: 'Computer Schmience', description: 'Breaking schomputers'}]
-			})
+		type: 'FETCH_FIELDS',
+		payload: fields
+	})
 }
 
 export function removeFields(newSelectedInterests){
@@ -30,5 +28,93 @@ export function removeFields(newSelectedInterests){
 	return({
 		type: 'REMOVE_FIELDS',
 		payload: fields
+	})
+}
+
+export function fetchQuiz(){
+
+	let quizData = {
+  "title": "Career Quiz",
+	"questions": [
+		{
+			"question-content": "What would you rather do on a free Saturday?",
+			"question-id": "q-1",
+			"answers": [
+				{
+					"answer-content": "fixing people",
+					"answer-id": "1-a",
+					"scoring": {
+						"science": 1,
+						"healthcare": 1,
+						"education": 1
+					}
+			},
+				{
+					"answer-content": "shopping at thrift-stores",
+					"answer-id": "1-b",
+					"scoring": {
+						"art": 1,
+						"music": 1
+					}
+
+				},
+				{
+					"answer-content": "building a custom computer",
+					"answer-id": "1-c",
+					"scoring":{
+						"tech": 1,
+						"engineering": 1,
+						"science": 1,
+						"trade": 1
+					}
+				},
+				{
+					"answer-content": "enjoying fine wines",
+					"answer-id": "1-d",
+					"scoring":{
+						"hospitality": 1,
+						"music": 1,
+						"editorial": 1,
+						"law": 1,
+						"business": 1		
+					}
+			}
+		]
+	}
+
+	// NEXT QUESTION AND ANSWERS
+
+
+
+	]
+}
+
+	return({
+		type: 'FETCH_QUIZ',
+		payload: quizData
+	})
+}
+
+
+export function scoreQuiz(quizData, answers){
+	debugger
+	 //then tally the scores, iterating through questions[:answers][:ref][:scoring]
+
+      // science: 20,
+      // art: 0,
+      // music: 0,
+      // education: 0,
+      // business: 0,
+      // tech: 0,
+      // hospitality: 0,
+      // healthcare: 0,
+      // editorial: 0,
+      // engineering: 0,
+      // law: 0,
+      // trade: 0
+
+	return({
+		type: 'SCORE_QUIZ',
+		payload: quizResults
 	})
 }

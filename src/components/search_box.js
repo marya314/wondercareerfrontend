@@ -12,7 +12,6 @@ class SearchBox extends React.Component{
 		super(props)
 		this.state = {
 			selectedInterests: []
-			// selectedFields: []
 		}
 		this.checkboxHandler = this.checkboxHandler.bind(this)
 	}
