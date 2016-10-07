@@ -11,12 +11,8 @@ export default function Question(props){
 						<input name={props.questionId} id={answer['answer-id']} type="radio" onChange={props.addAnswer} />
 						<label key={answer['answer-id']} htmlFor={answer['answer-id']}>{answer['answer-content']}</label>
 					</div>
-
-				)
-			}
-
+				)}
 			)}
-
 		</div>
 	)
 }
