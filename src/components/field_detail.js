@@ -9,6 +9,7 @@ function FieldDetail(props) {
 			<p><strong>About this career field: </strong>{props.selectedField.description}</p>
 			<h4>Notable Figures in This Field</h4>
 			<ul>
+				<li><Link to={`/fields/12/figures/1`}>Test Figure</Link></li>
 				{props.selectedField.figures.map((figure) => {
 					return (
 						<div>

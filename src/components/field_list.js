@@ -6,7 +6,7 @@ function FieldList (props){
 
 	return(
 		<div>
-			<div className="col-md-2" id="field-list">
+			<div id="field-list">
 				<h3>Career Fields:</h3>
 				<ul>
 				{props.fields.map((field) => {

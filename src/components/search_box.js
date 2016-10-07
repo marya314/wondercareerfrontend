@@ -4,6 +4,9 @@ import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {browserHistory} from 'react-router'
 
+import FieldList from './field_list'
+import FieldDetail from './field_detail'
+
 class SearchBox extends React.Component{
 	constructor(props){
 		super(props)
@@ -47,20 +50,22 @@ class SearchBox extends React.Component{
 
 	render(){
 		return(
-			<div className="col-md-2"  id="search-by-interest">
+			<div>
 				<h3>Search by Interest</h3>
-				<form>
-					{this.props.interests.map((interest) => {
-						return(
-							<div key={interest.id}>
-								<input type="checkbox" id={interest.id} onChange={this.checkboxHandler} ref={interest.id} />
-								<label htmlFor={interest.id}> {interest.name}</label>
-							</div>
-						)
-					})}
+				<div id="search-by-interest">
+					<form>
+						{this.props.interests.map((interest) => {
+							return(
+								<div key={interest.id}>
+									<input type="checkbox" id={interest.id} onChange={this.checkboxHandler} ref={interest.id} />
+									<label htmlFor={interest.id}> {interest.name}</label>
+								</div>
+							)
+						})}
 
-				</form>
-			{this.props.children}
+					</form>
+				</div>
+				{this.props.children}
 			</div>
 		)
 	}

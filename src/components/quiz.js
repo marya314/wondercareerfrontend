@@ -1,9 +1,17 @@
 import React from 'react'
+// import jsonLoader from 'json-loader'
+// import quizData from 'json!./quiz-json-test.json';
+// ``` javascript
+// var json = require("json!./file.json");
+// // => returns file.json content as json parsed object
+// ```
+
 
 class Quiz extends React.Component {
   constructor(props){
     super(props)
     this.state = {
+      answers: [],
       science: 0,
       art: 0,
       music: 0,
@@ -17,11 +25,25 @@ class Quiz extends React.Component {
       law: 0,
       trade: 0
     }
+    this.submitForm = this.submitForm.bind(this)
   }
+
+
+
+
 
   submitForm(event){
     event.preventDefault();
     debugger
+    this.refs['1-a'].checked
+
+    const answers = this.state.answers
+
+    if (answer.checked){
+      this.setState({
+        
+      })
+    }
 
   }
 
@@ -33,17 +55,18 @@ class Quiz extends React.Component {
         <p>Answer a few questions to determine your ideal career field...</p>
         <form onSubmit={this.submitForm}>
           <p>1. What would you rather do on a free Saturday?</p>
-          <input name="q-1" id='1-a' type="radio" />
+          <input name="q-1" id='1-a' ref='1-a' type="radio" />
           <label htmlFor='1-a'>a) Fixing people (--> healthcare, science, education)</label>
           <br />
-          <input name="q-1" id='1-b' type="radio" />
+          <input name="q-1" id='1-b' ref='1-b' type="radio" />
           <label htmlFor='1-b'>b) Shopping at thrift stores (--> art, music)</label>
           <br />
-          <input name="q-1" id='1-c' type="radio" />
+          <input name="q-1" id='1-c' ref='1-c' type="radio" />
           <label htmlFor='1-c'>c) Building your own custom computer (--> tech, engineering, science, trade)</label>
           <br />
-          <input name="q-1" id='1-d' type="radio" />
+          <input name="q-1" id='1-d' ref='1-d' type="radio" />
           <label htmlFor='1-d'>d) Enjoying fine wines (--> hospitality, music, editorial, law, business)</label>
+
           <p>2. Pick the image that most excites you:</p>
           <input name="q-2" id='2-a' type="radio" />
           <label htmlFor='2-a'>1) Picture of money (--> Business, Law)</label>

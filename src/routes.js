@@ -2,6 +2,7 @@ import React from 'react'
 import {Route} from 'react-router'
 
 import App from './components/app'
+import Home from './components/home'
 import FieldList from './components/field_list'
 import FieldDetail from './components/field_detail'
 import FigureDetail from './components/figure_detail'
@@ -10,6 +11,8 @@ import SearchBox from './components/search_box'
 
 export default (
 	<Route path='/' component={App}>
+		<Route path='/home' component={Home} />
+		<Route path='/quiz' component={Quiz} />
 		<Route path='/search' component={SearchBox}>
 			<Route path='/fields' component={FieldList}>
 				<Route path='/fields/:field_id' component={FieldDetail}>
@@ -17,6 +20,5 @@ export default (
 				</Route>
 			</Route>
 		</Route>
-		<Route path='/quiz' component={Quiz} />
 	</Route>
 )
