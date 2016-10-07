@@ -42,19 +42,16 @@ class Quiz extends React.Component {
     return(
 
       <div id="quiz">
-
-      {this.props.quiz.questions.map((question, i) => {
-        const answers = question.answers
-        return(
-          <form onSubmit={this.submitForm}>
+        <form onSubmit={this.submitForm}>
           <ol>
-            <Question key={i} question={question['question-content']} questionId={question['question-id']} answers={answers} addAnswer={() => {this.addAnswer}} />
-            </ol>
-          </form>
-        )
-
-      })}
-
+          {this.props.quiz.questions.map((question, i) => {
+            const answers = question.answers
+            return(
+              <Question key={i} question={question['question-content']} questionId={question['question-id']} answers={answers} addAnswer={() => {this.addAnswer}} />
+            )
+          })}
+        </ol>
+      </form>
     </div>
     )
   }
