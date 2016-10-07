@@ -1,4 +1,6 @@
 import React from 'react'
+import $ from 'jquery'
+
 // import jsonLoader from 'json-loader'
 // import quizData from 'json!./quiz-json-test.json';
 // ``` javascript
@@ -6,11 +8,11 @@ import React from 'react'
 // // => returns file.json content as json parsed object
 // ```
 
-
 class Quiz extends React.Component {
   constructor(props){
     super(props)
     this.state = {
+      quiz: {},
       answers: [],
       science: 0,
       art: 0,
@@ -28,22 +30,30 @@ class Quiz extends React.Component {
     this.submitForm = this.submitForm.bind(this)
   }
 
+  componentDidMount(){
+    const testData = $.getJSON('/src/components/quiz-json-test.json', function(result) {
+      this.setState({quiz: result});
+    }.bind(this))
+    debugger
 
-
-
+  }
 
   submitForm(event){
     event.preventDefault();
     debugger
-    this.refs['1-a'].checked
+    //array storing from JSON file questions[:answers][:ref] and  map through the refs to see if .checked = true
+    //then tally the scores, iterating through questions[:answers][:ref][:scoring]
+    this.refs.map((ref) => {
+      if (ref.checked){
+        this.setState({
+          answers: [...this.state.answers, ref]
+        })
+      }
+    })
 
-    const answers = this.state.answers
+  }
 
-    if (answer.checked){
-      this.setState({
-        
-      })
-    }
+  computeFieldScore(){
 
   }
 
