@@ -11,14 +11,13 @@ class Quiz extends React.Component {
     this.state = {
       answers: {}
     }
-    this.addAnswer = this.addAnswer.bind(this)
+    // this.addAnswer = this.addAnswer.bind(this)
     this.submitForm = this.submitForm.bind(this)
   }
 
   addAnswer(event){
     const answer = event.target
     const allAnswers = this.state.answers
-
     allAnswers[answer.name] = answer.id
     this.setState({
       answers: Object.assign({}, allAnswers)
@@ -28,14 +27,9 @@ class Quiz extends React.Component {
 
   submitForm(event){
     event.preventDefault();
-    debugger
-    const quizData = this.state.quiz
+    const quizData = this.props.quiz
     const allAnswers = this.state.answers
-    //then tally the scores, iterating through questions[:answers][:ref][:scoring]
-
-
-    this.actions.scoreQuiz(quizData, allAnswers)
-
+    this.props.actions.scoreQuiz(quizData, allAnswers)
   }
 
   render(){
@@ -47,7 +41,7 @@ class Quiz extends React.Component {
           {this.props.quiz.questions.map((question, i) => {
             const answers = question.answers
             return(
-              <Question key={i} question={question['question-content']} questionId={question['question-id']} answers={answers} addAnswer={() => {this.addAnswer}} />
+              <Question key={i} question={question['question-content']} questionId={question['question-id']} answers={answers} addAnswer={(event) => {this.addAnswer(event)}} />
             )
           })}
         </ol>
