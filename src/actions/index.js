@@ -33,6 +33,10 @@ export function removeFields(newSelectedInterests){
 
 export function fetchQuiz(){
 
+	// Quiz.new()
+	// Question.new(answer_ids: [])
+	// Answer.new(science: 0, art: 1, )
+
 	let quizData = {
   "title": "Career Quiz",
 	"questions": [

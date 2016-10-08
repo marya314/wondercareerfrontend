@@ -51,6 +51,7 @@ class Quiz extends React.Component {
             )
           })}
         </ol>
+        <input type="submit" />
       </form>
     </div>
     )
