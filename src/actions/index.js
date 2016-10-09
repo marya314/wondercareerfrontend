@@ -222,32 +222,28 @@ export function scoreQuiz(quizData, answers){
 			answerKeys.forEach((answerKey) => {
 				rawQuizResults[answerKey] += answer.scoring[answerKey]			
 			})
-
 		})
 
 		// make an array out of the rawQuizResults that can be sorted
 		const sortableQuizResults = []
 		Object.keys(rawQuizResults).map( (field) => {
-  		sortableQuizResults.push (Object.assign({}, {[field]: rawQuizResults[field]}))
+  		sortableQuizResults.push (Object.assign({}, {field: field, score: rawQuizResults[field]
+  		}))
 		})
 
-		debugger
-
-
-
-
-		// sort rawQuizResults scores from highest to lowest
-		// with an array of arrays
-		const sortedQuizScores = Object.keys(rawQuizResults).map( (field, i) => {
-			return result, rawQuizResults[result]
-		}).sort()
-
-
+		// sort sortableQuizResults scores from highest to lowest
+		const sortedQuizResults = sortableQuizResults.sort( (a, b) => {
+			if (a.score > b.score){
+				return 1
+			}
+			if (a.score < b.score){
+				return -1
+			}
+			return 0
+		})
 
 		// fetch Field data based on the 3 top scoring Fields
 		const topThreeFields = sortedQuizResults.slice(-3)
-
-		debugger
 
 		// const stringifiedIds = JSON.stringify (selectedInterests.map((interest) => {return interest.id}))
 		// const fields = 	fetch('http://localhost:3000/api/v1/fields?interestIds='+ stringifiedIds)
@@ -255,17 +251,14 @@ export function scoreQuiz(quizData, answers){
 		// 	.then(fields => {return fields})
 
 
-		// display a results page
-
-
-		// return quizResults
-
-		return rawQuizResults
+		// display a results page with topThreeFields
+		// and field information
+		return topThreeFields
 
 	}
 
 	return({
 		type: 'SCORE_QUIZ',
-		payload: quizResults
+		payload: topThreeFields
 	})
 }
