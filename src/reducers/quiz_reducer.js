@@ -3,7 +3,7 @@ export default function QuizReducer (state=[], action) {
     case 'FETCH_QUIZ':
       return action.payload
     case 'SCORE_QUIZ':
-    	return Object.assign({}, state, {quizResults: action.payload})
+    	return Object.assign({}, state, {quizResults: action.payload}, {step: 1})
     default:
       return state
   }

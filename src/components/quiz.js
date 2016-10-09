@@ -10,7 +10,8 @@ class Quiz extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      answers: []
+      answers: [],
+      step: 0
     }
     this.addAnswer = this.addAnswer.bind(this)
     this.submitForm = this.submitForm.bind(this)
@@ -34,7 +35,7 @@ class Quiz extends React.Component {
   }
 
   render(){
-    if (this.state.quizResults === undefined){
+    if (this.state.step === 0){
       return(
         <div id="quiz">
           <form onSubmit={this.submitForm}>

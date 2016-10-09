@@ -229,12 +229,6 @@ export function scoreQuiz(quizData, userAnswers){
 
 	// to be mutated and returned
 	const quizResults = []
-
-	// iterate through all user answers
-	// whenever an answer matches up with an answer in quiz data
-	// assign that score to rawquizresults
-	// return an array of all current answers with their scores
-
 	const questions = quizData.questions
 
 	questions.forEach(question => {
@@ -267,16 +261,11 @@ export function scoreQuiz(quizData, userAnswers){
 
 	// sort sortableQuizResults scores from highest to lowest
 	const sortedQuizResults = sortableQuizResults.sort( (a, b) => {
-		if (a.score > b.score){
-			return 1
-		}
-		if (a.score < b.score){
-			return -1
-		}
+		if (a.score > b.score){ return 1 }
+		if (a.score < b.score){ return -1 }
 		return 0
 	})
 
-	// TO DO: fetch Field data based on the 3 top scoring Fields
 	const topThreeFields = sortedQuizResults.slice(-3)
 	// const fieldNames = JSON.stringify(topThreeFields.map(field) => {
 	// 	return field.field
@@ -286,8 +275,6 @@ export function scoreQuiz(quizData, userAnswers){
 	// 	.then(response => {return response.json()})
 	// 	.then (fields => {return fields})
 
-	// display a results page with topThreeFields
-	// and field information
 	topThreeFields.forEach(result => {
 		quizResults.push(result)
 	})
