@@ -258,6 +258,9 @@ export function scoreQuiz(quizData, answers){
 		quizResults.push(result)
 	})
 
+	// bug! scores are calculated several times over
+	// does not impact quiz accuracy but is still annoying
+
 	return({
 		type: 'SCORE_QUIZ',
 		payload: quizResults

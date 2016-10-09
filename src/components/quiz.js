@@ -57,9 +57,9 @@ class Quiz extends React.Component {
 
           ) : (
 
-            <QuizResults quizResults={this.props.quizResults} />
-
-          ) )}
+            <QuizResults quizResults={this.state.quizResults} />            
+            )
+          )}
 
     </div>
     )
@@ -67,7 +67,6 @@ class Quiz extends React.Component {
 }
 
 function mapStateToProps(state){
-  debugger
   return({
     quiz: state.quiz
   })
