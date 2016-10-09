@@ -10,8 +10,7 @@ class Quiz extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      answers: {},
-      step: 0
+      answers: []
     }
     this.addAnswer = this.addAnswer.bind(this)
     this.submitForm = this.submitForm.bind(this)
@@ -20,9 +19,9 @@ class Quiz extends React.Component {
   addAnswer(event){
     const answer = event.target
     const allAnswers = this.state.answers
-    allAnswers[answer.name] = answer.id
+    allAnswers.push({question: parseInt(answer.name), answer: parseInt(answer.id)})
     this.setState({
-      answers: Object.assign({}, allAnswers)
+      answers: allAnswers
     })
     console.log(this.state.answers)
   } 
@@ -31,38 +30,33 @@ class Quiz extends React.Component {
     event.preventDefault();
     const quizData = this.props.quiz
     const allAnswers = this.state.answers
-    this.setState({
-      step: 1
-    })
     this.props.actions.scoreQuiz(quizData, allAnswers)
   }
 
   render(){
-    return(
-      <div id="quiz">
-
-        {(this.state.step === 0 ? (
-
+    if (this.state.quizResults === undefined){
+      return(
+        <div id="quiz">
           <form onSubmit={this.submitForm}>
             <ol>
-            {this.props.quiz.questions.map((question, i) => {
-              const answers = question.answers
-              return(
-                <Question key={i} question={question['question-content']} questionId={question['question-id']} answers={answers} addAnswer={(event) => {this.addAnswer(event)}} />
-              )
-            })}
-          </ol>
-          <input type="submit" />
-        </form>
-
-          ) : (
-
-            <QuizResults quizResults={this.state.quizResults} />            
-            )
-          )}
-
-    </div>
-    )
+              {this.props.quiz.questions.map((question) => {
+                const answers = question.answers
+                return(
+                  <Question key={question.id} question={question['question-content']} questionId={question.id} answers={answers} addAnswer={(event) => {this.addAnswer(event)}} />
+                )
+              })}
+            </ol>
+            <input type="submit" />
+          </form>          
+        </div>
+      )
+    } else {
+      return(
+        <div id="quiz">
+          <QuizResults quizResults={this.state.quizResults} />
+        </div>
+      )
+    }
   }
 }
 

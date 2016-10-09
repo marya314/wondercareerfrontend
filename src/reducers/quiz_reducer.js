@@ -7,5 +7,4 @@ export default function QuizReducer (state=[], action) {
     default:
       return state
   }
-
 }

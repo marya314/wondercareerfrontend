@@ -41,12 +41,14 @@ export function fetchQuiz(){
   "title": "Career Quiz",
 	"questions": [
 		{
+			id: 1,
 			"question-content": "What would you rather do on a free Saturday?",
-			"question-id": "q-1",
 			"answers": [
 				{
 					"answer-content": "fixing people",
+					id: 1,
 					"answer-id": "1-a",
+					"question_id": 1,
 					"scoring": {
 						"science": 1,
 						"healthcare": 1,
@@ -55,7 +57,9 @@ export function fetchQuiz(){
 			},
 				{
 					"answer-content": "shopping at thrift-stores",
+					id: 2,
 					"answer-id": "1-b",
+					"question_id": 1,
 					"scoring": {
 						"art": 1,
 						"music": 1
@@ -64,7 +68,9 @@ export function fetchQuiz(){
 				},
 				{
 					"answer-content": "building a custom computer",
+					id: 3,
 					"answer-id": "1-c",
+					"question_id": 1,
 					"scoring":{
 						"tech": 1,
 						"engineering": 1,
@@ -74,7 +80,9 @@ export function fetchQuiz(){
 				},
 				{
 					"answer-content": "enjoying fine wines",
+					id: 4,
 					"answer-id": "1-d",
+					"question_id": 1,
 					"scoring":{
 						"hospitality": 1,
 						"music": 1,
@@ -87,10 +95,12 @@ export function fetchQuiz(){
 		},
 
 			{
+				id: 2,
 				"question-content": "What would you rather do on a free Saturday?",
-				"question-id": "q-2",
 				"answers": [
 					{
+						id: 5,
+						"question_id": 2,
 						"answer-content": "fixing people",
 						"answer-id": "2-a",
 						"scoring": {
@@ -100,6 +110,8 @@ export function fetchQuiz(){
 						}
 				},
 					{
+						id: 6,
+						"question_id": 2,
 						"answer-content": "shopping at thrift-stores",
 						"answer-id": "2-b",
 						"scoring": {
@@ -109,8 +121,10 @@ export function fetchQuiz(){
 
 					},
 					{
+						id: 7,
 						"answer-content": "building a custom computer",
 						"answer-id": "2-c",
+						"question_id": 2,
 						"scoring":{
 							"tech": 1,
 							"engineering": 1,
@@ -119,6 +133,8 @@ export function fetchQuiz(){
 						}
 				},
 				{
+					id: 8,
+					"question_id": 2,
 					"answer-content": "enjoying fine wines",
 					"answer-id": "2-d",
 					"scoring":{
@@ -133,10 +149,12 @@ export function fetchQuiz(){
 		},
 
 			{
+				id: 3,
 				"question-content": "What would you rather do on a free Saturday?",
-				"question-id": "q-3",
 				"answers": [
 					{
+						id: 10,
+						"question_id": 3,
 						"answer-content": "fixing people",
 						"answer-id": "3-a",
 						"scoring": {
@@ -146,6 +164,8 @@ export function fetchQuiz(){
 						}
 				},
 					{
+						id: 11,
+						"question_id": 3,
 						"answer-content": "shopping at thrift-stores",
 						"answer-id": "3-b",
 						"scoring": {
@@ -155,6 +175,8 @@ export function fetchQuiz(){
 
 					},
 					{
+						id: 12,
+						"question_id": 3,
 						"answer-content": "building a custom computer",
 						"answer-id": "3-c",
 						"scoring":{
@@ -165,6 +187,8 @@ export function fetchQuiz(){
 						}
 					},
 					{
+						id: 13,
+						"question_id": 3,
 						"answer-content": "enjoying fine wines",
 						"answer-id": "3-d",
 						"scoring":{
@@ -186,7 +210,7 @@ export function fetchQuiz(){
 	})
 }
 
-export function scoreQuiz(quizData, answers){
+export function scoreQuiz(quizData, userAnswers){
 
 	 const rawQuizResults = {
     science: 0,
@@ -206,22 +230,32 @@ export function scoreQuiz(quizData, answers){
 	// to be mutated and returned
 	const quizResults = []
 
-	// iterate through questions
+	// iterate through all user answers
+	// whenever an answer matches up with an answer in quiz data
+	// assign that score to rawquizresults
+	// return an array of all current answers with their scores
+
 	const questions = quizData.questions
-	questions.forEach( (question) => {
-		evaluateAnswers(question.answers)
+
+	questions.forEach(question => {
+
+		question.answers.forEach(answer => {
+			evaluateAnswer(answer, userAnswers)
+		})
+
 	})
 
-	// for each answer of every question,
-	// add its score to rawQuizResults
-	function evaluateAnswers(answers){
-		answers.forEach((answer) => {
-			// iterate through answerKeys to change rawQuizResults
-			const answerKeys = Object.keys(answer.scoring)
-			answerKeys.forEach((answerKey) => {
-				rawQuizResults[answerKey] += answer.scoring[answerKey]			
-			})
+	function evaluateAnswer(answer, userAnswers){
+		userAnswers.forEach(userAnswer => {
+			if (userAnswer.answer === answer.id){
+				const answerKeys = Object.keys(answer.scoring)
+				answerKeys.forEach(answerKey => {
+					rawQuizResults[answerKey] += answer.scoring[answerKey]
+				})
+
+	  	}
 		})
+
 	}
 
 	// make an array out of the rawQuizResults that can be sorted
@@ -257,9 +291,6 @@ export function scoreQuiz(quizData, answers){
 	topThreeFields.forEach(result => {
 		quizResults.push(result)
 	})
-
-	// bug! scores are calculated several times over
-	// does not impact quiz accuracy but is still annoying
 
 	return({
 		type: 'SCORE_QUIZ',
