@@ -243,18 +243,18 @@ export function scoreQuiz(quizData, answers){
 		})
 
 		// fetch Field data based on the 3 top scoring Fields
-		const topThreeFields = sortedQuizResults.slice(-3)
-
-		// const stringifiedIds = JSON.stringify (selectedInterests.map((interest) => {return interest.id}))
-		// const fields = 	fetch('http://localhost:3000/api/v1/fields?interestIds='+ stringifiedIds)
+		// const topThreeFields = sortedQuizResults.slice(-3)
+		// const fieldNames = JSON.stringify(topThreeFields.map(field) => {
+		// 	return field.field
+		// })
+		// baseUrl = 'http://localhost:3000/api/v1/fields'
+		// const topThreeFieldData = fetch(`${baseUrl}/fields?fieldIds=${fieldNames}`)
 		// 	.then(response => {return response.json()})
-		// 	.then(fields => {return fields})
-
+		// 	.then (fields => {return fields})
 
 		// display a results page with topThreeFields
 		// and field information
 		return topThreeFields
-
 	}
 
 	return({

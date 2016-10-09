@@ -4,12 +4,14 @@ import * as actions from '../actions'
 import {bindActionCreators} from 'redux'
 
 import Question from './question'
+import QuizResults from './quiz_results'
 
 class Quiz extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      answers: {}
+      answers: {},
+      step: 0
     }
     // this.addAnswer = this.addAnswer.bind(this)
     this.submitForm = this.submitForm.bind(this)
@@ -29,24 +31,36 @@ class Quiz extends React.Component {
     event.preventDefault();
     const quizData = this.props.quiz
     const allAnswers = this.state.answers
+    this.setState({
+      step: 1
+    })
     this.props.actions.scoreQuiz(quizData, allAnswers)
   }
 
   render(){
     return(
-
       <div id="quiz">
-        <form onSubmit={this.submitForm}>
-          <ol>
-          {this.props.quiz.questions.map((question, i) => {
-            const answers = question.answers
-            return(
-              <Question key={i} question={question['question-content']} questionId={question['question-id']} answers={answers} addAnswer={(event) => {this.addAnswer(event)}} />
-            )
-          })}
-        </ol>
-        <input type="submit" />
-      </form>
+
+        {(this.state.step === 0 ? (
+
+          <form onSubmit={this.submitForm}>
+            <ol>
+            {this.props.quiz.questions.map((question, i) => {
+              const answers = question.answers
+              return(
+                <Question key={i} question={question['question-content']} questionId={question['question-id']} answers={answers} addAnswer={(event) => {this.addAnswer(event)}} />
+              )
+            })}
+          </ol>
+          <input type="submit" />
+        </form>
+
+          ) : (
+
+            <QuizResults />
+
+          ) )}
+
     </div>
     )
   }
