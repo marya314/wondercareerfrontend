@@ -203,8 +203,8 @@ export function scoreQuiz(quizData, answers){
     trade: 0	 	
 	 }
 
-	 // to be mutated and returned
-	 const quizResults = []
+	// to be mutated and returned
+	const quizResults = []
 
 	// iterate through questions
 	const questions = quizData.questions
@@ -216,47 +216,47 @@ export function scoreQuiz(quizData, answers){
 	// add its score to rawQuizResults
 	function evaluateAnswers(answers){
 		answers.forEach((answer) => {
-
 			// iterate through answerKeys to change rawQuizResults
 			const answerKeys = Object.keys(answer.scoring)
 			answerKeys.forEach((answerKey) => {
 				rawQuizResults[answerKey] += answer.scoring[answerKey]			
 			})
 		})
-
-		// make an array out of the rawQuizResults that can be sorted
-		const sortableQuizResults = []
-		Object.keys(rawQuizResults).map( (field) => {
-  		sortableQuizResults.push (Object.assign({}, {field: field, score: rawQuizResults[field]
-  		}))
-		})
-
-		// sort sortableQuizResults scores from highest to lowest
-		const sortedQuizResults = sortableQuizResults.sort( (a, b) => {
-			if (a.score > b.score){
-				return 1
-			}
-			if (a.score < b.score){
-				return -1
-			}
-			return 0
-		})
-
-		// TO DO: fetch Field data based on the 3 top scoring Fields
-		// const topThreeFields = sortedQuizResults.slice(-3)
-		// const fieldNames = JSON.stringify(topThreeFields.map(field) => {
-		// 	return field.field
-		// })
-		// baseUrl = 'http://localhost:3000/api/v1/fields'
-		// const topThreeFieldData = fetch(`${baseUrl}/fields?fieldIds=${fieldNames}`)
-		// 	.then(response => {return response.json()})
-		// 	.then (fields => {return fields})
-
-		// display a results page with topThreeFields
-		// and field information
-		
-		sortedQuizResults.slice(-3).forEach(result => {quizResults.push(result)})
 	}
+
+	// make an array out of the rawQuizResults that can be sorted
+	const sortableQuizResults = []
+	Object.keys(rawQuizResults).map( (field) => {
+		sortableQuizResults.push (Object.assign({}, {field: field, score: rawQuizResults[field]
+		}))
+	})
+
+	// sort sortableQuizResults scores from highest to lowest
+	const sortedQuizResults = sortableQuizResults.sort( (a, b) => {
+		if (a.score > b.score){
+			return 1
+		}
+		if (a.score < b.score){
+			return -1
+		}
+		return 0
+	})
+
+	// TO DO: fetch Field data based on the 3 top scoring Fields
+	const topThreeFields = sortedQuizResults.slice(-3)
+	// const fieldNames = JSON.stringify(topThreeFields.map(field) => {
+	// 	return field.field
+	// })
+	// baseUrl = 'http://localhost:3000/api/v1/fields'
+	// const topThreeFieldData = fetch(`${baseUrl}/fields?fieldIds=${fieldNames}`)
+	// 	.then(response => {return response.json()})
+	// 	.then (fields => {return fields})
+
+	// display a results page with topThreeFields
+	// and field information
+	topThreeFields.forEach(result => {
+		quizResults.push(result)
+	})
 
 	return({
 		type: 'SCORE_QUIZ',

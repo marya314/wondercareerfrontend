@@ -11,10 +11,9 @@ class Quiz extends React.Component {
     super(props)
     this.state = {
       answers: {},
-      step: 0,
-      quizResults: []
+      step: 0
     }
-    // this.addAnswer = this.addAnswer.bind(this)
+    this.addAnswer = this.addAnswer.bind(this)
     this.submitForm = this.submitForm.bind(this)
   }
 
@@ -58,7 +57,7 @@ class Quiz extends React.Component {
 
           ) : (
 
-            <QuizResults results={this.state.quizResults} />
+            <QuizResults quizResults={this.props.quizResults} />
 
           ) )}
 
@@ -68,6 +67,7 @@ class Quiz extends React.Component {
 }
 
 function mapStateToProps(state){
+  debugger
   return({
     quiz: state.quiz
   })
