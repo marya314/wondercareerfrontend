@@ -62,9 +62,18 @@ class Quiz extends React.Component {
 }
 
 function mapStateToProps(state){
-  return({
-    quiz: state.quiz
-  })
+    console.log('mapStateToProps: ', state.quiz)
+    debugger
+  if (state.quiz.length > 0){
+    console.log('mapStateToProps is full: ', state.quiz)
+    return({
+      quiz: state.quiz
+    })
+  } else {
+    return({
+      quiz: ['loading quiz!']
+    })
+  }
 }
 
 function mapDispatchToProps(dispatch){

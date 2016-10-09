@@ -16,6 +16,8 @@ const store = createStore(rootReducer, applyMiddleware(ReduxPromise))
 store.dispatch(fetchInterests())
 store.dispatch(fetchQuiz())
 
+setTimeout(console.log('state: ', store.getState()), 400)
+
 ReactDOM.render(
 	<Provider store={store}>
 		<Router history={browserHistory} routes={routes} />
