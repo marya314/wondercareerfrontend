@@ -224,7 +224,44 @@ export function scoreQuiz(quizData, answers){
 			})
 
 		})
+
+		// make an array out of the rawQuizResults that can be sorted
+		const sortableQuizResults = []
+		Object.keys(rawQuizResults).map( (field) => {
+  		sortableQuizResults.push (Object.assign({}, {[field]: rawQuizResults[field]}))
+		})
+
+		debugger
+
+
+
+
+		// sort rawQuizResults scores from highest to lowest
+		// with an array of arrays
+		const sortedQuizScores = Object.keys(rawQuizResults).map( (field, i) => {
+			return result, rawQuizResults[result]
+		}).sort()
+
+
+
+		// fetch Field data based on the 3 top scoring Fields
+		const topThreeFields = sortedQuizResults.slice(-3)
+
+		debugger
+
+		// const stringifiedIds = JSON.stringify (selectedInterests.map((interest) => {return interest.id}))
+		// const fields = 	fetch('http://localhost:3000/api/v1/fields?interestIds='+ stringifiedIds)
+		// 	.then(response => {return response.json()})
+		// 	.then(fields => {return fields})
+
+
+		// display a results page
+
+
+		// return quizResults
+
 		return rawQuizResults
+
 	}
 
 	return({
