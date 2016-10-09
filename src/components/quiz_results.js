@@ -1,10 +1,9 @@
 import React from 'react'
 
-export default function(){
-	debugger
+export default function(props){
 	return(
 		<div>
-			Your Results!
+			<h1>Your Results!</h1>
 		</div>
 	)
 

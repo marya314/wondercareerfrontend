@@ -188,7 +188,6 @@ export function fetchQuiz(){
 
 export function scoreQuiz(quizData, answers){
 
-	// initial quiz results
 	 const rawQuizResults = {
     science: 0,
     art: 0,
@@ -204,9 +203,11 @@ export function scoreQuiz(quizData, answers){
     trade: 0	 	
 	 }
 
-	const questions = quizData.questions
+	 // to be mutated and returned
+	 const quizResults = []
 
 	// iterate through questions
+	const questions = quizData.questions
 	questions.forEach( (question) => {
 		evaluateAnswers(question.answers)
 	})
@@ -215,10 +216,9 @@ export function scoreQuiz(quizData, answers){
 	// add its score to rawQuizResults
 	function evaluateAnswers(answers){
 		answers.forEach((answer) => {
-			// get the keys for each answer
-			const answerKeys = Object.keys(answer.scoring)
 
 			// iterate through answerKeys to change rawQuizResults
+			const answerKeys = Object.keys(answer.scoring)
 			answerKeys.forEach((answerKey) => {
 				rawQuizResults[answerKey] += answer.scoring[answerKey]			
 			})
@@ -242,7 +242,7 @@ export function scoreQuiz(quizData, answers){
 			return 0
 		})
 
-		// fetch Field data based on the 3 top scoring Fields
+		// TO DO: fetch Field data based on the 3 top scoring Fields
 		// const topThreeFields = sortedQuizResults.slice(-3)
 		// const fieldNames = JSON.stringify(topThreeFields.map(field) => {
 		// 	return field.field
@@ -254,11 +254,12 @@ export function scoreQuiz(quizData, answers){
 
 		// display a results page with topThreeFields
 		// and field information
-		return topThreeFields
+		
+		sortedQuizResults.slice(-3).forEach(result => {quizResults.push(result)})
 	}
 
 	return({
 		type: 'SCORE_QUIZ',
-		payload: topThreeFields
+		payload: quizResults
 	})
 }

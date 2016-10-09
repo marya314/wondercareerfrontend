@@ -11,7 +11,8 @@ class Quiz extends React.Component {
     super(props)
     this.state = {
       answers: {},
-      step: 0
+      step: 0,
+      quizResults: []
     }
     // this.addAnswer = this.addAnswer.bind(this)
     this.submitForm = this.submitForm.bind(this)
@@ -57,7 +58,7 @@ class Quiz extends React.Component {
 
           ) : (
 
-            <QuizResults />
+            <QuizResults results={this.state.quizResults} />
 
           ) )}
 
