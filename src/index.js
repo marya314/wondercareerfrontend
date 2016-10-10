@@ -9,10 +9,15 @@ import {createStore, applyMiddleware} from 'redux'
 
 import rootReducer from './reducers'
 import {fetchInterests} from './actions'
+import {fetchQuiz} from './actions'
 
 const store = createStore(rootReducer, applyMiddleware(ReduxPromise))
 
+store.dispatch(fetchQuiz())
 store.dispatch(fetchInterests())
+
+
+setTimeout(console.log('state: ', store.getState()), 400)
 
 ReactDOM.render(
 	<Provider store={store}>
@@ -20,5 +25,4 @@ ReactDOM.render(
 	</Provider>, document.getElementById('main')
 
 	)
-
 
