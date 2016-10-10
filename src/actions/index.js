@@ -105,7 +105,7 @@ export function scoreQuiz(quizData, userAnswers){
 	})
 
 	const topThreeFields = sortedQuizResults.slice(-3)
-	debugger
+
 	// const fieldNames = JSON.stringify(topThreeFields.map(field) => {
 	// 	return field.field
 	// })
@@ -115,7 +115,7 @@ export function scoreQuiz(quizData, userAnswers){
 	// 	.then (fields => {return fields})
 
 	topThreeFields.forEach(result => {
-		quizResults.push(result)
+		quizResults.unshift(result)
 	})
 
 	return({

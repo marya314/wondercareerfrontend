@@ -10,8 +10,8 @@ class Quiz extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      answers: []
-      // step: 0
+      answers: [],
+      quiz_status: 0
     }
     this.addAnswer = this.addAnswer.bind(this)
     this.submitForm = this.submitForm.bind(this)
@@ -32,10 +32,14 @@ class Quiz extends React.Component {
     const quizData = this.props.quiz
     const allAnswers = this.state.answers
     this.props.actions.scoreQuiz(quizData, allAnswers)
+    this.setState({
+      answers: [],
+      quiz_status: 1
+    })
   }
 
   render(){
-    // if (this.state.step === 0){
+    if (this.state.quiz_status === 0){
       return(
         <div id="quiz">
           <form onSubmit={this.submitForm}>
@@ -51,28 +55,27 @@ class Quiz extends React.Component {
           </form>          
         </div>
       )
-    // } else {
-      // return(
-      //   <div id="quiz">
-      //     <QuizResults quizResults={this.state.quizResults} />
-      //   </div>
-      // )
-    // }
+    } else {
+      return(
+        <div id="quiz">
+          <QuizResults quizResults={this.props.quiz_results} />
+        </div>
+      )
+    }
   }
 }
 
 function mapStateToProps(state){
     console.log('quiz mapStateToProps: ', state.quiz)
-    // return{
-    //   quiz: state.quiz
-    // }
   if (state.quiz.id != undefined){
     return({
-      quiz: state.quiz
+      quiz: state.quiz,
+      quiz_results: state.quiz_results
     })
   } else {
     return({
-      quiz: {questions: []}
+      quiz: {questions: []},
+      quiz_results: []
     })
   }
 }
