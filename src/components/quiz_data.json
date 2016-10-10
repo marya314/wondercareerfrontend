@@ -1,0 +1,55 @@
+{
+  "title": "Career Quiz",
+	"questions": [
+		{
+			"question-content": "What would you rather do on a free Saturday?",
+			"question-id": "q-1",
+			"answers": [
+				{
+					"answer-content": "fixing people",
+					"answer-id": "1-a",
+					"scoring": {
+						"science": 1,
+						"healthcare": 1,
+						"education": 1
+					}
+			},
+				{
+					"answer-content": "shopping at thrift-stores",
+					"answer-id": "1-b",
+					"scoring": {
+						"art": 1,
+						"music": 1
+					}
+
+				},
+				{
+					"answer-content": "building a custom computer",
+					"answer-id": "1-c",
+					"scoring":{
+						"tech": 1,
+						"engineering": 1,
+						"science": 1,
+						"trade": 1
+					}
+				},
+				{
+					"answer-content": "enjoying fine wines",
+					"answer-id": "1-d",
+					"scoring":{
+						"hospitality": 1,
+						"music": 1,
+						"editorial": 1,
+						"law": 1,
+						"business": 1		
+					}
+			}
+		]
+	}
+
+	// NEXT QUESTION AND ANSWERS
+
+
+
+	]
+}
