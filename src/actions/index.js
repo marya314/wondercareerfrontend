@@ -105,6 +105,7 @@ export function scoreQuiz(quizData, userAnswers){
 	})
 
 	const topThreeFields = sortedQuizResults.slice(-3)
+<<<<<<< HEAD
 	const stringifiedFieldNames = JSON.stringify(topThreeFields.map((field) => {return field.field}))
 	const topThreeFieldData = fetch(`${baseUrl}fields?fieldNames=${stringifiedFieldNames}`)
 		.then(response => {return response.json()})
@@ -112,6 +113,19 @@ export function scoreQuiz(quizData, userAnswers){
 	debugger
 	topThreeFieldData.forEach(result => {
 		quizResults.push(result)
+=======
+
+	// const fieldNames = JSON.stringify(topThreeFields.map(field) => {
+	// 	return field.field
+	// })
+	// baseUrl = 'http://localhost:3000/fields'
+	// const topThreeFieldData = fetch(`${baseUrl}/fields?fieldIds=${fieldNames}`)
+	// 	.then(response => {return response.json()})
+	// 	.then (fields => {return fields})
+
+	topThreeFields.forEach(result => {
+		quizResults.unshift(result)
+>>>>>>> 2dca649ddd1f13fa9ddbc7b533086e984fde333f
 	})
 
 	return({
