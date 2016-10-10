@@ -13,14 +13,14 @@ export default function(props){
 				<h2>Your Results!</h2>
 				<p>According to our test, you would likely be happiest in one of these three career fields:</p>
 				<ol>
-				{props.quizResults.map(result =>{
+				{props.quizResults.map(field =>{
 					return(
-						<li key={result.field}>{result.field}</li>
+						<li key={field.name}>{field.name}</li>
 					)
 				})}
 				</ol>
 				<a href='/quiz'>Unhappy with your results? Click here to retake the quiz!</a>
 			</div>
-		)	
+		)
 	}
 }
