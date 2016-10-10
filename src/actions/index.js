@@ -2,6 +2,7 @@ const baseUrl = 'http://localhost:3000/api/v1/'
 // const baseUrl = 'https://polar-basin-83640.herokuapp.com/api/v1/'
 
 export function fetchInterests(){
+
 	const interests = fetch(`${baseUrl}interests`)
 		.then(response => {return response.json()})
 		.then(interests => {return interests})
