@@ -1,8 +1,8 @@
-const localhostUrl = 'http://localhost:3000/'
-const baseUrl = 'https://polar-basin-83640.herokuapp.com/'
+const baseUrl = 'http://localhost:3000/api/v1/'
+// const baseUrl = 'https://polar-basin-83640.herokuapp.com/api/v1/'
 
 export function fetchInterests(){
-	const interests = fetch(`${localhostUrl}api/v1/interests`)
+	const interests = fetch(`${baseUrl}interests`)
 		.then(response => {return response.json()})
 		.then(interests => {return interests})
 	return({
@@ -13,7 +13,7 @@ export function fetchInterests(){
 
 export function fetchFields(selectedInterests){
 	const stringifiedIds = JSON.stringify (selectedInterests.map((interest) => {return interest.id}))
-	const fields = 	fetch(`${localhostUrl}api/v1/fields?interestIds=${stringifiedIds}`)
+	const fields = 	fetch(`${baseUrl}fields?interestIds=${stringifiedIds}`)
 			.then(response => {return response.json()})
 			.then(fields => {return fields})
 	return ({
@@ -24,7 +24,7 @@ export function fetchFields(selectedInterests){
 
 export function removeFields(newSelectedInterests){
 	const stringifiedIds = JSON.stringify (newSelectedInterests.map((interest) => {return interest.id}))
-	const fields = 	fetch(`${localhostUrl}api/v1/fields?interestIds=${stringifiedIds}`)
+	const fields = 	fetch(`${baseUrl}fields?interestIds=${stringifiedIds}`)
 			.then(response => {return response.json()})
 			.then(fields => {return fields})
 	return({
@@ -34,7 +34,7 @@ export function removeFields(newSelectedInterests){
 }
 
 export function fetchQuiz(){
-	const quizData = fetch(`${localhostUrl}api/v1/quizzes/1`)
+	const quizData = fetch(`${baseUrl}quizzes/1`)
 		.then(response => {
 			return response.json()
 		})
@@ -79,9 +79,10 @@ export function scoreQuiz(quizData, userAnswers){
 	function evaluateAnswer(answer, userAnswers){
 		userAnswers.forEach(userAnswer => {
 			if (userAnswer.answer === answer.id){
-				const answerKeys = Object.keys(answer.scoring)
+				const answerScoring = JSON.parse(answer.scoring)
+				const answerKeys = Object.keys(answerScoring)
 				answerKeys.forEach(answerKey => {
-					rawQuizResults[answerKey] += answer.scoring[answerKey]
+					rawQuizResults[answerKey] += answerScoring[answerKey]
 				})
 
 	  	}
@@ -104,10 +105,11 @@ export function scoreQuiz(quizData, userAnswers){
 	})
 
 	const topThreeFields = sortedQuizResults.slice(-3)
+	debugger
 	// const fieldNames = JSON.stringify(topThreeFields.map(field) => {
 	// 	return field.field
 	// })
-	// baseUrl = 'http://localhost:3000/api/v1/fields'
+	// baseUrl = 'http://localhost:3000/fields'
 	// const topThreeFieldData = fetch(`${baseUrl}/fields?fieldIds=${fieldNames}`)
 	// 	.then(response => {return response.json()})
 	// 	.then (fields => {return fields})

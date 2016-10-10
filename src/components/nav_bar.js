@@ -3,7 +3,7 @@ import React from 'react'
 export default (props) =>{
 
 	return(
-		<nav>
+		<nav className="pink">
 	    <div className="nav-wrapper">
 	      <a href="/home" className="brand-logo">{props.title + " 🐱!"}</a>
 	      <a href="#" data-activates="mobile-demo" className="button-collapse"><i className="material-icons">menu</i></a>
