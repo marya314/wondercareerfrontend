@@ -61,7 +61,7 @@ export function scoreQuiz(quizData, userAnswers){
     editorial: 0,
     engineering: 0,
     law: 0,
-    trade: 0	 	
+    trade: 0
 	 }
 
 	// to be mutated and returned
@@ -105,16 +105,12 @@ export function scoreQuiz(quizData, userAnswers){
 	})
 
 	const topThreeFields = sortedQuizResults.slice(-3)
+	const stringifiedFieldNames = JSON.stringify(topThreeFields.map((field) => {return field.field}))
+	const topThreeFieldData = fetch(`${baseUrl}fields?fieldNames=${stringifiedFieldNames}`)
+		.then(response => {return response.json()})
+		.then(fields => {return fields})
 	debugger
-	// const fieldNames = JSON.stringify(topThreeFields.map(field) => {
-	// 	return field.field
-	// })
-	// baseUrl = 'http://localhost:3000/fields'
-	// const topThreeFieldData = fetch(`${baseUrl}/fields?fieldIds=${fieldNames}`)
-	// 	.then(response => {return response.json()})
-	// 	.then (fields => {return fields})
-
-	topThreeFields.forEach(result => {
+	topThreeFieldData.forEach(result => {
 		quizResults.push(result)
 	})
 
