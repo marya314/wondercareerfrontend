@@ -48,6 +48,7 @@ class Quiz extends React.Component {
                 const answers = question.answers
                 return(
                   <Question key={question.id} question={question['question_content']} questionId={question.id} answers={answers} addAnswer={(event) => {this.addAnswer(event)}} />
+
                 )
               })}
             </ol>
