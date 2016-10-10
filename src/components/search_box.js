@@ -16,7 +16,7 @@ class SearchBox extends React.Component{
 		this.checkboxHandler = this.checkboxHandler.bind(this)
 	}
 
-	// component
+	// componentWillMount
 
 	checkboxHandler (event){
 		if (event.target.checked){
