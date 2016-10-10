@@ -11,7 +11,6 @@ export default function(props){
 			</div>
 		)
 	} else {
-		debugger
 		return (
 			<div>
 				<h2>Your Results!</h2>
@@ -25,7 +24,6 @@ export default function(props){
 					)
 				})}
 				</ol>
-				<FieldDetail />
 				<a href='/quiz'>Unhappy with your results? Click here to retake the quiz!</a>
 			</div>
 		)
