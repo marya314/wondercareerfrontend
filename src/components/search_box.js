@@ -71,6 +71,7 @@ class SearchBox extends React.Component{
 }
 
 function mapStateToProps(state){
+	console.log(state)
 	return{
 		interests: state.interests
 	}

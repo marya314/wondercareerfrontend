@@ -10,8 +10,8 @@ class Quiz extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      answers: [],
-      step: 0
+      answers: []
+      // step: 0
     }
     this.addAnswer = this.addAnswer.bind(this)
     this.submitForm = this.submitForm.bind(this)
@@ -35,7 +35,7 @@ class Quiz extends React.Component {
   }
 
   render(){
-    if (this.state.step === 0){
+    // if (this.state.step === 0){
       return(
         <div id="quiz">
           <form onSubmit={this.submitForm}>
@@ -43,7 +43,7 @@ class Quiz extends React.Component {
               {this.props.quiz.questions.map((question) => {
                 const answers = question.answers
                 return(
-                  <Question key={question.id} question={question['question-content']} questionId={question.id} answers={answers} addAnswer={(event) => {this.addAnswer(event)}} />
+                  <Question key={question.id} question={question['question_content']} questionId={question.id} answers={answers} addAnswer={(event) => {this.addAnswer(event)}} />
                 )
               })}
             </ol>
@@ -51,27 +51,28 @@ class Quiz extends React.Component {
           </form>          
         </div>
       )
-    } else {
-      return(
-        <div id="quiz">
-          <QuizResults quizResults={this.state.quizResults} />
-        </div>
-      )
-    }
+    // } else {
+      // return(
+      //   <div id="quiz">
+      //     <QuizResults quizResults={this.state.quizResults} />
+      //   </div>
+      // )
+    // }
   }
 }
 
 function mapStateToProps(state){
-    console.log('mapStateToProps: ', state.quiz)
-    debugger
-  if (state.quiz.length > 0){
-    console.log('mapStateToProps is full: ', state.quiz)
+    console.log('quiz mapStateToProps: ', state.quiz)
+    // return{
+    //   quiz: state.quiz
+    // }
+  if (state.quiz.id != undefined){
     return({
       quiz: state.quiz
     })
   } else {
     return({
-      quiz: ['loading quiz!']
+      quiz: {questions: []}
     })
   }
 }

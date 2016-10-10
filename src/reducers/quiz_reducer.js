@@ -1,11 +1,9 @@
-export default function QuizReducer (state=[], action) {
+export default function QuizReducer (state={}, action) {
   switch(action.type){
     case 'FETCH_QUIZ':
-    	debugger
-    	console.log('quiz reducer: ', action.payload)
-      return [...state, action.payload]
-    case 'SCORE_QUIZ':
-    	return state
+    	return action.payload
+    // case 'SCORE_QUIZ':
+    // 	return state
     	// return Object.assign({}, state, {quizResults: action.payload}, {step: 1})
     default:
       return state

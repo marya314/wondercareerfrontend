@@ -13,8 +13,9 @@ import {fetchQuiz} from './actions'
 
 const store = createStore(rootReducer, applyMiddleware(ReduxPromise))
 
-store.dispatch(fetchInterests())
 store.dispatch(fetchQuiz())
+store.dispatch(fetchInterests())
+
 
 setTimeout(console.log('state: ', store.getState()), 400)
 

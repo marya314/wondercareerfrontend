@@ -9,7 +9,7 @@ export default function Question(props){
 				return(
 					<div key={"answer-" + answer.id}>
 						<input name={props.questionId} id={answer.id} data-id={answer.id} type="radio" onChange={props.addAnswer} />
-						<label key={"answer-" + answer.id} htmlFor={answer.id}>{answer['answer-content']}</label>
+						<label key={"answer-" + answer.id} htmlFor={answer.id}>{answer['answer_content']}</label>
 					</div>
 				)}
 			)}
