@@ -26,6 +26,7 @@ function FieldDetail(props) {
 }
 
 function mapStateToProps(state, ownProps){
+	debugger
 	return{
 		selectedField: state.fields.find((field) => {return field.id === parseInt(ownProps.routeParams.field_id)
 		} )

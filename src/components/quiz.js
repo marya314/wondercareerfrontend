@@ -51,6 +51,11 @@ class Quiz extends React.Component {
 
                 )
               })}
+              <div>
+                <li>What does a Rorschoc test look like?</li>
+                <label htmlFor="rorschoc">Type Your Reponse:</label>
+                <input id="rorschoc" type="text" />
+              </div>
             </ol>
             <input type="submit" />
           </form>          

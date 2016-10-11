@@ -49,7 +49,8 @@ export function fetchQuiz(){
 
 export function scoreQuiz(quizData, userAnswers){
 
-	 const rawQuizResults = {
+	const questions = quizData.questions
+	const rawQuizResults = {
     science: 0,
     art: 0,
     music: 0,
@@ -63,10 +64,6 @@ export function scoreQuiz(quizData, userAnswers){
     law: 0,
     trade: 0
 	 }
-
-	// to be mutated and returned
-	const quizResults = []
-	const questions = quizData.questions
 
 	questions.forEach(question => {
 
@@ -104,14 +101,19 @@ export function scoreQuiz(quizData, userAnswers){
 		return 0
 	})
 
+	// we need to see the results ranked by score
 	const topThreeFields = sortedQuizResults.slice(-3)
+	const rankedQuizResults = []
+	topThreeFields.forEach(result => {
+		rankedQuizResults.unshift(result)
+	})
+
+	// and we need the actual result data
 	const stringifiedFieldNames = JSON.stringify(topThreeFields.map((field) => {return field.field}))
 	const topThreeFieldData = fetch(`${baseUrl}fields?fieldNames=${stringifiedFieldNames}`)
 		.then(response => {return response.json()})
 		.then(fields => {return fields})
-	// topThreeFieldData.forEach(result => {
-	// 	quizResults.push(result)
-	// })
+	
 	return({
 		type: 'SCORE_QUIZ',
 		payload: topThreeFieldData

@@ -1,4 +1,7 @@
 import React from 'react'
+import {Link} from 'react-router'
+
+import FieldDetail from './field_detail'
 
 export default function(props){
 	if (props.quizResults === undefined){
@@ -11,11 +14,13 @@ export default function(props){
 		return (
 			<div>
 				<h2>Your Results!</h2>
-				<p>According to our test, you would likely be happiest in one of these three career fields:</p>
+				<p>According to our test, you would likely be happiest in one of these career fields:</p>
 				<ol>
 				{props.quizResults.map(field =>{
 					return(
-						<li key={field.name}>{field.name}</li>
+						<li key={field.id}>
+							<Link to={`/fields/${field.id}`}>{field.name}</Link>
+						</li>
 					)
 				})}
 				</ol>
