@@ -113,7 +113,7 @@ export function scoreQuiz(quizData, userAnswers){
 	const topThreeFieldData = fetch(`${baseUrl}fields?fieldNames=${stringifiedFieldNames}`)
 		.then(response => {return response.json()})
 		.then(fields => {return fields})
-	
+
 	return({
 		type: 'SCORE_QUIZ',
 		payload: topThreeFieldData
