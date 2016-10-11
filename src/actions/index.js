@@ -56,7 +56,7 @@ export function scoreQuiz(quizData, userAnswers){
     music: 0,
     education: 0,
     business: 0,
-    tech: 0,
+    technology: 0,
     hospitality: 0,
     healthcare: 0,
     editorial: 0,
