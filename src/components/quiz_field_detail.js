@@ -1,10 +1,9 @@
 import React from 'react'
-import {connect} from 'react-redux'
 import {Link} from 'react-router'
 
-function FieldDetail(props) {
+export default function(props){
 	return(
-		<div className="col-md-8" id="field-detail">
+		<div>
 			<h3>{props.selectedField.name}</h3>
 			<p><strong>About this career field: </strong>{props.selectedField.description}</p>
 			<h4>Notable Figures in This Field</h4>
@@ -19,16 +18,7 @@ function FieldDetail(props) {
 					)
 				})}
 			</ul>
-			{props.children}
+
 		</div>
 	)
 }
-
-function mapStateToProps(state, ownProps){
-	return{
-		selectedField: state.fields.find((field) => {return field.id === parseInt(ownProps.routeParams.field_id)
-		})
-	}
-}
-
-export default connect(mapStateToProps)(FieldDetail)

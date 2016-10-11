@@ -51,9 +51,9 @@ class SearchBox extends React.Component{
 
 	render(){
 		return(
-			<div>
-				<h3>Search by Interest</h3>
+			<div id="search-mother">
 				<div id="search-by-interest">
+					<h3>Search by Interest</h3>
 					<form>
 						{this.props.interests.map((interest) => {
 							return(
@@ -66,7 +66,9 @@ class SearchBox extends React.Component{
 
 					</form>
 				</div>
-				{this.props.children}
+				<div id="search-children">
+					{this.props.children}
+				</div>
 			</div>
 		)
 	}
