@@ -13,8 +13,13 @@ class QuizResults extends React.Component{
 		console.log(props.quizResults)
 	}
 
-	render(){
+	handleSelectedField(event){
+		event.preventDefault();
+		const newSelectedField = this.props.quizResults.find((field) => {return field.name === event.target.text})
+		this.setState({selectedField: newSelectedField})
+	}
 
+	render(){
 		if (this.props.quizResults === undefined){
 			return(
 				<div>
@@ -30,13 +35,13 @@ class QuizResults extends React.Component{
 					{this.props.quizResults.map(field =>{
 						return(
 							<li key={field.id}>
-								<Link to={`/fields/${field.id}`}>{field.name.toUpperCase()}</Link>
+								<a onClick={this.handleSelectedField.bind(this)}>{field.name}</a>
 							</li>
 						)
 					})}
 					</ol>
-					
-					<QuizFieldDetail selectedField={this.props.selectedField} />
+{
+					<QuizFieldDetail selectedField={this.state.selectedField} />}
 					<br />
 					<a href='/quiz'><small>Click here to retake the quiz!</small></a>
 				</div>
@@ -47,7 +52,7 @@ class QuizResults extends React.Component{
 
 function mapStateToProps(state){
 	if (state.quiz_results.length != 0){
-
+debugger
 		return({
 			quizResults: state.quiz_results,
 			selectedField: state.quiz_results[0]

@@ -25,7 +25,7 @@ class Quiz extends React.Component {
       answers: allAnswers
     })
     console.log(this.state.answers)
-  } 
+  }
 
   submitForm(event){
     event.preventDefault();
@@ -52,19 +52,20 @@ class Quiz extends React.Component {
                 )
               })}
               <div>
-                <li>What does a Rorschoc test look like?</li>
+                <li>What does a Rorschach test look like?</li>
                 <label htmlFor="rorschoc">Type Your Reponse:</label>
                 <input id="rorschoc" type="text" />
               </div>
             </ol>
             <input type="submit" />
-          </form>          
+          </form>
         </div>
       )
     } else {
       return(
         <div id="quiz">
           <QuizResults quizResults={this.props.quiz_results} />
+          {this.props.children}
         </div>
       )
     }

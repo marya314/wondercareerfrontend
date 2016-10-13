@@ -1,7 +1,8 @@
 import React from 'react'
+import {connect} from 'react-redux'
 import {Link} from 'react-router'
 
-export default function(props){
+export default function (props){
 	return(
 		<div>
 			<h3>{props.selectedField.name}</h3>
