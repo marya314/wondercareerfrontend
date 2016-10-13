@@ -27,7 +27,7 @@ class QuizFieldDetail extends React.Component {
 					return (
 						<div>
 							<li key={figure.id}>
-								<a onClick={this.handleSelectedFigure.bind(this)}>{figure.name}</a>
+								<a href="#" onClick={this.handleSelectedFigure.bind(this)}>{figure.name}</a>
 
 							</li>
 						</div>

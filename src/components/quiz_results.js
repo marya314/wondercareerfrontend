@@ -35,7 +35,7 @@ class QuizResults extends React.Component{
 					{this.props.quizResults.map(field =>{
 						return(
 							<li key={field.id}>
-								<a onClick={this.handleSelectedField.bind(this)}>{field.name}</a>
+								<a href="#" onClick={this.handleSelectedField.bind(this)}>{field.name}</a>
 							</li>
 						)
 					})}

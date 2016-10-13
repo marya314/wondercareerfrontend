@@ -41,7 +41,7 @@ class Quiz extends React.Component {
   render(){
     if (this.state.quiz_status === 0){
       return(
-        <div id="quiz">
+        <div id="quiz" className="container">
           <form onSubmit={this.submitForm}>
             <ol>
               {this.props.quiz.questions.map((question) => {
