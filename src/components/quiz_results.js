@@ -52,7 +52,6 @@ class QuizResults extends React.Component{
 
 function mapStateToProps(state){
 	if (state.quiz_results.length != 0){
-debugger
 		return({
 			quizResults: state.quiz_results,
 			selectedField: state.quiz_results[0]
