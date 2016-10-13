@@ -11,7 +11,8 @@ class SearchBox extends React.Component{
 	constructor(props){
 		super(props)
 		this.state = {
-			selectedInterests: []
+			selectedInterests: [],
+			term: ""
 		}
 		this.checkboxHandler = this.checkboxHandler.bind(this)
 	}
@@ -49,16 +50,22 @@ class SearchBox extends React.Component{
 		}
 	}
 
+	handleSearchChange(event) {
+		this.setState({term: event.target.value})
+	}
+
 	render(){
 		return(
 			<div id="search-mother">
 				<div id="search-by-interest">
 					<h3>Search by Interest</h3>
+					<input value={this.state.term} placeholder="Search Interests" onChange={this.handleSearchChange.bind(this)} />
 					<form>
-						{this.props.interests.map((interest) => {
+					{this.props.interests.filter((interest) =>{
+						return (this.state.term === "") || (interest.name.includes(this.state.term.toLowerCase()))}).map((interest) => {
 							return(
 								<div key={interest.id}>
-									<input type="checkbox" id={interest.id} onChange={this.checkboxHandler} ref={interest.id} />
+									<input type="checkbox" id={interest.id} onChange={this.checkboxHandler} ref={interest.id} checked={this.state.selectedInterests.includes(interest)}/>
 									<label htmlFor={interest.id}> {interest.name}</label>
 								</div>
 							)

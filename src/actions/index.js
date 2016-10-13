@@ -1,5 +1,5 @@
-// const baseUrl = 'http://localhost:3000/api/v1/'
-const baseUrl = 'https://wonderapi.herokuapp.com/api/v1/'
+const baseUrl = 'http://localhost:3000/api/v1/'
+// const baseUrl = 'https://wonderapi.herokuapp.com/api/v1/'
 
 export function fetchInterests(){
 	const interests = fetch(`${baseUrl}interests`)
